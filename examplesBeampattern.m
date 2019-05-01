@@ -5,9 +5,15 @@
 % Position of sensors and weighting of 2D array
 % Create circular array
 
-%%% LoadPath to subdir 
-addpath("/algorithm")
+%%% Set graphics_toolkit to gnuplot_binary
+%graphics_toolkit('gnuplot')
 
+%%% LoadPath to subdir 
+addpath("algorithm")
+addpath("beampattern")
+addpath("plot")
+
+% Number and radius of Mics in Array 
 nElements = 20;
 radius = 0.6;
 
@@ -68,7 +74,7 @@ thetaSteeringAngle = -20;
 
 % Calculate and plot the array factor
 fig = figure;
-fig.Color = 'w';
+%%% fig.Color = 'w';
 ax = axes('Parent', fig);
 hold(ax, 'on')
 for ff = f
@@ -85,7 +91,7 @@ axis(ax, [thetaScanningAngles(1) thetaScanningAngles(end) -30 0])
 legend(ax, 'show', 'Location','SouthEast')
 title(ax, ['Steering angle ' num2str(thetaSteeringAngle) ' degrees'],'FontWeight','Normal')
 indx = find(thetaScanningAngles >= thetaSteeringAngle, 1);
-line(ax, [thetaScanningAngles(indx) thetaScanningAngles(indx)], ax.YLim, 'LineWidth', 1, 'Color', 'r', 'LineStyle','--');
+line(ax, [thetaScanningAngles(indx) thetaScanningAngles(indx)], ax, 'LineWidth', 1, 'Color', 'r', 'LineStyle','--');
 
 
 %% Plot array factor from 0 to 10 kHz
@@ -113,7 +119,7 @@ W_all(W_all<-dynRange) = NaN;
 
 %Plot array factor
 fig = figure;
-fig.Color = 'w';
+%%% fig.Color = 'w';
 ax = axes('Parent', fig);
 imagesc(ax, f*1e-3,thetaScanningAngles, W_all')
 xlabel(ax, 'kHz')
@@ -162,7 +168,7 @@ AF = 20*log10(AF);
 
 %Plot geometry and response
 fig = figure;
-fig.Color = 'w';
+%%% fig.Color = 'w';
 
 axGeometry = subplot(121, 'Parent', fig);
 scatter3(axGeometry, xPos, yPos, zPos, 20, 'filled')
