@@ -5,6 +5,9 @@
 % Position of sensors and weighting of 2D array
 % Create circular array
 
+%%% LoadPath to subdir 
+addpath("/algorithm")
+
 nElements = 20;
 radius = 0.6;
 
@@ -25,7 +28,7 @@ phiScanningAngles = 0;
 
 %Calculate and plot the array pattern for various frequencies
 fig = figure;
-fig.Color = 'w';
+%%% fig.Color = 'w';
 
 axGeometry = subplot(121, 'Parent', fig);
 scatter(axGeometry, xPos, yPos, 20, 'filled')
